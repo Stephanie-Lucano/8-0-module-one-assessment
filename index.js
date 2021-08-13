@@ -186,7 +186,26 @@ function findById(movies, id) {
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function formatted (genre) {
+  return genre[0].toUpperCase() + genre.slice(1).toLowerCase()
+}
+
+function filterByGenre(movies, genre) {
+  // if the inputted `movies` array is empty or no movies match the inputted `genre`, return `[]`
+  if (movies.length === 0) {
+    return []
+  }
+  
+  let movieGenre = []
+  for (const movie of movies) {
+    // lets standardize the format of genre to have the first char w/a capital letter + everything else lowercase cased w/a helper function
+    // if the genre is included in movie.genre string
+    if (movie.genre.includes(formatted(genre))) {
+      movieGenre.push(movie)
+    }
+  }
+  return movieGenre
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
