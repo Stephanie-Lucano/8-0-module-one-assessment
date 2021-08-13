@@ -229,7 +229,25 @@ function filterByGenre(movies, genre) {
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function formatYear (released) {
+  const stringToArr = released.split(' ')
+  // take the last string in the arr which is the year && turn the string to a number
+  return Number(stringToArr[stringToArr.length -1])
+}
+
+function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
+  let moviesReleasedBy = []
+
+  for (const movie of movies) {
+    //  compare only the year it was released and turn it into a number so I can compare it to other movies released with a helper funct
+    if (formatYear(movie.released) <= year) {
+      // push the movie object to `moviesReleasedBy`
+      moviesReleasedBy.push(movie)
+    }
+  }
+
+  return moviesReleasedBy
+}
 
 /**
  * getBiggestBoxOfficeMovie()
