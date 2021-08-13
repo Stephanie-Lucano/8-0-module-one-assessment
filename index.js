@@ -146,7 +146,25 @@ function countByRating(movies) {
       // Toy Story 4
     };
  */
-function findById() {}
+
+function findById(movies, id) {
+  // If the inputted `movies` array is empty return `null`.
+  if (movies.length === 0) {
+    return null
+  } 
+
+  // if the ID does not match any movie, return `null`
+  let movieID = null
+  // loop through array of objects using a for of loop
+  for (const movie of movies) {
+    // if the ID does match 
+    if (movie.imdbID === id) {
+      // reassign movieID to that partciular movie object
+      movieID = movie
+    }
+  }
+  return movieID
+}
 
 /**
  * filterByGenre()
