@@ -113,7 +113,24 @@ function getAverageIMDBRating(movies) {
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(movies) {
+  // If the inputted `movies` array is empty, return `{}`
+  let moviesRated = {}
+
+  // loop through array of object with for of loop
+  for (const movie of movies) {
+    // if the key movie rated is not in the movieRated object
+    if (!moviesRated[movie.rated]) {
+      // create a key value pair in movieRated where key: rated and value: 1
+      moviesRated[movie.rated] = 1
+      // otherwise  
+    } else {
+      // make the value of the key go up
+      moviesRated[movie.rated]++
+    }
+  }
+  return moviesRated
+}
 
 /**
  * findById()
