@@ -260,7 +260,40 @@ function getAllMoviesReleasedAtOrBeforeYear(movies, year) {
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function formatMoney (money) {
+  let arrOfMoney = []
+  for (let i = 1; i < money.length; i++) {
+    if (money[i].includes(',')) {
+      continue
+    } else {
+      arrOfMoney.push(money[i]);
+    }
+  }
+  return Number(arrOfMoney.join(''))
+}
+
+formatMoney("$28,946,127"); //> 28946127
+
+function getBiggestBoxOfficeMovie(movies) {
+  if (movies.length === 0) {
+    return null
+  }
+
+  // create helper function to help you get the movie that made the most money at the box office
+  let mostMoney = 0
+  let nameOfMovie = ''
+
+  for (const movie of movies) {
+    // compare a number to a number
+    if (formatMoney(movie.boxOffice) > mostMoney) {
+      mostMoney = formatMoney(movie.boxOffice)
+      nameOfMovie = movie.title
+    }
+  }
+
+  return nameOfMovie
+}
+getBiggestBoxOfficeMovie(exampleMovies)
 
 // Do not change anything below this line.
 module.exports = {
